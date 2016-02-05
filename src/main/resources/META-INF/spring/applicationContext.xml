@@ -8,18 +8,26 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
-	<context:property-placeholder location="/database.properties" />
+	<context:property-placeholder location="classpath:database.properties" />
 	
-	<bean id="dataSource"  
-       	  class="org.apache.commons.dbcp.BasicDataSource"  
-  	      destroy-method="close"  
-          lazy-init="false"  
-   	      driverClassName="${dataSource.driverClassName}"  
-          url="${dataSource.url}"  
-          username="${dataSource.username}"  
-          password="${dataSource.password}"  
-          maxActive="${dataSource.maxActive}"  
-          maxIdle="${dataSource.maxIdle}"  
-          maxWait="${dataSource.maxWait}" />
-	<bean class="org.springframework.jdbc.core.JdbcTemplate" dataSource-ref="dataSource" />
+	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
+	<context:component-scan base-package="shjh.springmvc.controller"/>
+	<context:component-scan base-package="shjh.springmvc.dao.impl"/>
+	<context:component-scan base-package="shjh.springmvc.service.impl"/>
+	
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${dataSource.driverClassName}" />
+		<property name="jdbcUrl" value="${dataSource.url}" />
+		<property name="user" value="${dataSource.username}" />
+		<property name="password" value="${dataSource.password}" />
+		<property name="acquireIncrement" value="2" />
+		<property name="initialPoolSize" value="2" />
+		<property name="maxIdleTime" value="25000" />
+		<property name="maxPoolSize" value="100" />
+		<property name="minPoolSize" value="2" />
+	</bean>
+          
+	<bean class="org.springframework.jdbc.core.JdbcTemplate" >
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 </beans>

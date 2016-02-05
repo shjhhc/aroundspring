@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="uploadify.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="swfobject.js"></script>
+  <script type="text/javascript" src="jquery.uploadify.min.js"></script>
+</head>
+<body>  <table>
+        <tr>
+            <td><label><img src="/images/save.gif"/> 上传课件：</label></td>
+            <td><label><input type="file" name="uploadify" id="uploadify"/></label>&nbsp;&nbsp;</td>
+            <td><div id="fileQueue"></div></td>
+        </tr>
+   </table>
+   <script>
+       $(document).ready(function () {
+           $("#uploadify").uploadify({
+               'uploader': 'uploadify.swf',
+               'script': "/uploadify.php",
+               'cancelImg': 'uploadify-cancel.png',
+               'queueID': 'fileQueue',
+               'auto': true,
+               'buttonText': 'select',
+               'simUploadLimit': 1,
+               'queueSizeLimit': 1,
+               'fileExt': '*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.zip;*.rar;*.7z',
+               onComplete: function (event, queueID, fileObj, response, data) {
+                   //转换为json对象
+                   var dataObj = eval("(" + response + ")");
+                   saveFile(dataObj);
+               },
+               onSelect: function () {
+               },
+               onError: function (event, queueID, fileObj) {
+                   alert("文件:" + fileObj.name + "上传失败");
+               }
+           });
+       });
+   </script>
+</body>
+</html>
