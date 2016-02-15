@@ -29,4 +29,24 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.queryStudents();
 	}
 
+	@Override
+	public void saveStuRedis(Student stu) {
+		studentDao.saveStuRedis(stu);
+	}
+
+	@Override
+	public Student getStuRedis(int id) {
+		return (Student) studentDao.getStuRedis(id);
+	}
+
+	@Override
+	public void saveStuINRedis(Student stu) {
+		studentDao.saveStuINRedis(stu);
+	}
+
+	@Override
+	public Student getStuINRedis(int id) {
+		return studentDao.getStuINRedis(id);
+	}
+
 }

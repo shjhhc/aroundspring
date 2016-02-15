@@ -5,14 +5,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.SerializationUtils;
 
 import shjh.springmvc.dao.StudentDao;
 import shjh.springmvc.domain.Student;
@@ -66,7 +70,7 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public void saveStuRedis(final Student stu) {
+	public void saveStuINRedis(final Student stu) {
 		redisTemplate.execute(new RedisCallback<Object>() {
 
 			@Override
@@ -79,13 +83,13 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public Student getStuRedis(final int id) {
+	public Student getStuINRedis(final int id) {
 		redisTemplate.execute(new RedisCallback<Student>() {
 
 			@Override
 			public Student doInRedis(RedisConnection connection)
 					throws DataAccessException {
-				byte[] key = redisTemplate.getStringSerializer().serialize("stu.uuid" + id);
+				byte[] key = redisTemplate.getStringSerializer().serialize("stu.uuid." + id);
 				if(connection.exists(key)){
 					byte[] value = connection.get(key);
 					String name = redisTemplate.getStringSerializer().deserialize(value);
@@ -93,13 +97,38 @@ public class StudentDaoImpl implements StudentDao {
 					stu.setId(id);
 					stu.setName(name);
 					stu.setAge(18);
-					stu.setOccupation("coding");
+					stu.setOccupation("INcoding");
 					return stu;
 				}
 				return null;
 			}
 		});
 		return null;
+	}
+	
+	@Override
+	public void saveStuRedis(final Object obj) {
+		ValueOperations<Serializable, Serializable> valueOps = redisTemplate.opsForValue();
+		if(obj instanceof Student){
+			Student stu = (Student)obj;
+			valueOps.set("student.uuid." + stu.getId(), stu);
+		}else if(obj instanceof HttpSession){
+			HttpSession session = (HttpSession)obj;
+			byte[] sessionByte = SerializationUtils.serialize(session);
+			valueOps.set("session.uuid." + session.getId(), sessionByte);
+		}
+	}
+	
+	@Override
+	public Object getStuRedis(final int id) {
+		ValueOperations<Serializable, Serializable> valueOps = redisTemplate.opsForValue();
+		Object obj = valueOps.get("student.uuid." + id);
+		if(obj instanceof Student){
+			return (Student)obj;
+		}else if(obj instanceof HttpSession){
+			return (HttpSession)obj;
+		}
+		return obj;
 	}
 
 }

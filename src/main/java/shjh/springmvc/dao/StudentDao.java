@@ -13,7 +13,12 @@ public interface StudentDao {
 	
 	public List<Student> queryStudents();
 	
-	public void saveStuRedis(final Student stu);
+	public void saveStuINRedis(final Student stu);
 	
-	public Student getStuRedis(final int id);
+	public Student getStuINRedis(final int id);
+	
+	public void saveStuRedis(final Object stu);
+	
+	public Object getStuRedis(final int id);
+
 }

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:aop="http://www.springframework.org/schema/aop"
@@ -12,20 +11,29 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
-	<context:property-placeholder location="classpath:redis.properties" />
-	<context:component-scan base-package="shjh.springmvc.dao.impl" />
+	<context:property-placeholder location="classpath:redis.properties" ignore-unresolvable="true" />
+	<context:component-scan base-package="shjh.springmvc.controller"/>
+	<context:component-scan base-package="shjh.springmvc.dao.impl"/>
+	<context:component-scan base-package="shjh.springmvc.service.impl"/>
 	
 	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" 
 	p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}" p:pool-config-ref="poolConfig" />
 	
 	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
 		<property name="connectionFactory" ref="jedisConnectionFactory" />
+		<property name="keySerializer" ref="stringSerializer" />
+		<!-- 开启事务，可以通过transcational注解控制 -->
+		<property name="enableTransactionSupport" value="true" />
+		<!-- <property name="valueSerializer">
+        	<bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+        </property> -->
 	</bean>
+	<bean id="stringSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
 	
 	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig" >
 		<property name="maxIdle" value="${redis.maxIdle}" />
-		<property name="maxActive" value="${redis.maxActive}" />  
-        <property name="maxWait" value="${redis.maxWait}" />  
+		<property name="maxTotal" value="${redis.maxTotal}" />  
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />  
         <property name="testOnBorrow" value="${redis.testOnBorrow}" />  
 	</bean>
 </beans>

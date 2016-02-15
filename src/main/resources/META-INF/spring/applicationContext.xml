@@ -8,12 +8,14 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
-	<context:property-placeholder location="classpath:database.properties" />
+		
+	<context:property-placeholder location="classpath:database.properties" ignore-unresolvable="true" />
 	
 	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
 	<context:component-scan base-package="shjh.springmvc.controller"/>
 	<context:component-scan base-package="shjh.springmvc.dao.impl"/>
 	<context:component-scan base-package="shjh.springmvc.service.impl"/>
+	<context:component-scan base-package="shjh.springmvc.utils"/>
 	
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="${dataSource.driverClassName}" />

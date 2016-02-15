@@ -6,14 +6,15 @@
 	<display-name>aroundspring</display-name>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:META-INF/spring/applicationContext.xml</param-value>
+		<param-value>classpath:META-INF/spring/*.xml</param-value>
 	</context-param>
 	<servlet>
 		<servlet-name>springmvc</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:META-INF/spring/springmvc-servlet.xml</param-value>
+			<param-value>classpath:META-INF/spring/springmvc-servlet.xml,
+						 classpath:META-INF/spring/spring-redis.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

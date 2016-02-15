@@ -47,4 +47,36 @@ public class StudentController {
 		return "student/studentshow";
 	}
 	
+	@RequestMapping(value="/savein/{id}", method={RequestMethod.POST, RequestMethod.GET})
+	public String saveStuINRedis(@PathVariable int id){
+		Student stu = studentService.queryStudentById(id);
+		studentService.saveStuINRedis(stu);
+		return "redirect:/student/queryall.do";
+	}
+	
+	@RequestMapping(value="/getin/{id}", method={RequestMethod.GET})
+	public String getStuINRedis(@PathVariable int id, Model model){
+		List<Student> stulist = new ArrayList<>();
+		Student stu = studentService.getStuINRedis(id);
+		stulist.add(stu);
+		model.addAttribute("stulist", stulist);
+		return "student/studentshow";
+	}
+	
+	@RequestMapping(value="/save/{id}", method={RequestMethod.POST, RequestMethod.GET})
+	public String saveStuRedis(@PathVariable int id){
+		Student stu = studentService.queryStudentById(id);
+		studentService.saveStuRedis(stu);
+		return "redirect:/student/queryall.do";
+	}
+
+	@RequestMapping(value="/get/{id}", method={RequestMethod.GET})
+	public String getStuRedis(@PathVariable int id, Model model){
+		List<Student> stulist = new ArrayList<>();
+		Student stu = studentService.getStuRedis(id);
+		stulist.add(stu);
+		model.addAttribute("stulist", stulist);
+		return "student/studentshow";
+	}
+	
 }
