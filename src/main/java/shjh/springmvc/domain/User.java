@@ -1,11 +1,11 @@
 package shjh.springmvc.domain;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class User {
 	private int userId;
 	private String userName;
+	private String password;
 	private int age;
 	private Date createTime;
 	private int status;
@@ -24,6 +24,14 @@ public class User {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	
+	public String getPassword(){
+		return password;
+	}
+	
+	public void setPassword(String password){
+		this.password = password;
 	}
 
 	public int getAge() {

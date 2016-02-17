@@ -12,6 +12,8 @@
 		<spring.groupId>org.springframework</spring.groupId>
 		<spring.version>4.1.6.RELEASE</spring.version>
 		<spring.data.version>1.6.0.RELEASE</spring.data.version>
+		<mybatis.version>3.3.0</mybatis.version>
+		<mybatis.spring>1.2.3</mybatis.spring>
 		<!-- mysql 驱动 -->
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
@@ -88,6 +90,19 @@
 		</dependency>
 		
 		<!-- spring data end -->
+		
+		<!-- mybatis start -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis.spring}</version>
+		</dependency>
+		<!-- mybatis end -->
 		
 		<!-- redis start -->
 		<dependency>
