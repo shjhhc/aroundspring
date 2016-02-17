@@ -2,6 +2,7 @@ package shjh.springmvc.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Hashtable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -49,5 +50,10 @@ public class UserDaoImpl implements UserDao {
 			return user;
 		}
 	};
+
+	@Override
+	public User queryUser(Hashtable<String, Object> hpFiter) {
+		return null;
+	}
 
 }

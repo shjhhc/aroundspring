@@ -6,8 +6,15 @@ import shjh.springmvc.service.LoginService;
 public class LoginServiceImpl implements LoginService {
 
 	@Override
-	public DataResult logon() {
+	public DataResult logon(String userName, String password) {
+		DataResult result = new DataResult();
+		
 		return null;
+	}
+
+	@Override
+	public void logoff(String userName) {
+		
 	}
 
 }
