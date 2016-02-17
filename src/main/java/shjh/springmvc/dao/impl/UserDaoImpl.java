@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import shjh.springmvc.dao.UserDao;
+import shjh.springmvc.dao.mybatis.UserDao;
 import shjh.springmvc.domain.User;
 
 public class UserDaoImpl implements UserDao {

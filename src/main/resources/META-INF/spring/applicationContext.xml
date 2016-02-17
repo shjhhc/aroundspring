@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:task="http://www.springframework.org/schema/task" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
-    xsi:schemaLocation="
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
@@ -8,16 +12,17 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
-		
-	<context:property-placeholder location="classpath:database.properties" ignore-unresolvable="true" />
-	
+
+	<context:property-placeholder location="classpath:database.properties"
+		ignore-unresolvable="true" />
+
 	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
-	<context:component-scan base-package="shjh.springmvc.controller"/>
-	<context:component-scan base-package="shjh.springmvc.dao.impl"/>
-	<context:component-scan base-package="shjh.springmvc.service.impl"/>
-	<context:component-scan base-package="shjh.springmvc.utils"/>
-	
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<context:component-scan base-package="shjh.springmvc.controller" />
+	<context:component-scan base-package="shjh.springmvc.dao.impl" />
+	<context:component-scan base-package="shjh.springmvc.service.impl" />
+	<context:component-scan base-package="shjh.springmvc.utils" />
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="${dataSource.driverClassName}" />
 		<property name="jdbcUrl" value="${dataSource.url}" />
 		<property name="user" value="${dataSource.username}" />
@@ -29,12 +34,32 @@
 		<property name="minPoolSize" value="2" />
 	</bean>
 	
+	<bean id="dataSourceMybatis" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+             <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+             <property name="url" value="${dataSource.url}"/>
+             <property name="username" value="${dataSource.username}"/>
+             <property name="password" value="${dataSource.password}"/>
+        </bean>
+
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<property name="dataSource" ref="dataSourceMybatis" />
+		<property name="mapperLocations" value="classpath*:/META-INF/mybatis/mappers/*Mapper.xml" />
 	</bean>
-          
-	<bean class="org.springframework.jdbc.core.JdbcTemplate" >
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="shjh.springmvc.dao.mybatis" />
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<bean class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 </beans>

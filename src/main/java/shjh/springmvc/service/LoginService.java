@@ -1,7 +1,5 @@
 package shjh.springmvc.service;
 
-import javax.servlet.http.HttpSession;
-
 import shjh.springmvc.framework.core.DataResult;
 
 public interface LoginService {
