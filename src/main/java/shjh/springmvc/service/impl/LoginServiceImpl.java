@@ -19,7 +19,7 @@ public class LoginServiceImpl implements LoginService {
 	public DataResult logon(String userName, String password) {
 		DataResult result = new DataResult();
 		Hashtable<String, Object> hpFilter = new Hashtable<String, Object>();
-		hpFilter.put("user_name", userName);
+		hpFilter.put("userName", userName);
 		hpFilter.put("password", password);
 		User user = userDao.queryUser(hpFilter);
 		if(user == null){

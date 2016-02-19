@@ -33,12 +33,12 @@ public class LoginController {
      * @see [类、类#方法、类#成员]
      */
     @RequestMapping(value = "/logon", method={RequestMethod.POST, RequestMethod.GET})
-    public void logon(HttpServletRequest request){
-    	int userId = (int) request.getAttribute("userId");
-    	String userName = (String) request.getAttribute("userName");
-    	String password = (String) request.getAttribute("password");
+    public String logon(HttpServletRequest request){
+    	String userName = (String) request.getParameter("userName");
+    	String password = (String) request.getParameter("password");
     	HttpSession session = request.getSession();
     	loginService.logon(userName, password);
+    	return "redirect:/student/queryall.do";
     }
     
     /**
