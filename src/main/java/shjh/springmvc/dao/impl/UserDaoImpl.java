@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User queryUserById(int userId) {
+	public User queryUserById(Integer userId) {
 		String sql = "select * from user where user_id = ?";
 		return jdbcTemplate.queryForObject(sql, new Object[] { userId },
 				userRowMap);
@@ -45,7 +45,7 @@ public class UserDaoImpl implements UserDao {
 			user.setUserId(arg0.getInt("user_Id"));
 			user.setUserName(arg0.getString("user_name"));
 			user.setAge(arg0.getInt("age"));
-			user.setCreateTime(arg0.getDate("create_date"));
+			user.setCreateTime(arg0.getDate("create_time"));
 			user.setStatus(arg0.getInt("status"));
 			return user;
 		}
