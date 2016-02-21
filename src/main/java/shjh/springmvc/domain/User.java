@@ -1,8 +1,15 @@
 package shjh.springmvc.domain;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -127347298663854388L;
+	
 	private int userId;
 	private String userName;
 	private String password;
@@ -25,12 +32,12 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
-	public String getPassword(){
+
+	public String getPassword() {
 		return password;
 	}
-	
-	public void setPassword(String password){
+
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -56,6 +63,20 @@ public class User {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public String toString() {
+		return "{userId:"
+				+ userId
+				+ ",userName:"
+				+ userName
+				+ ",password:"
+				+ password
+				+ ",age:"
+				+ age
+				+ ",createTime:"
+				+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(createTime) 
+				+ ",status:" + status + "}";
 	}
 
 }

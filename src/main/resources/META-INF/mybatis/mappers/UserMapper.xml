@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shjh.springmvc.dao.mybatis.UserDao">
-	<select id="queryUser" parameterType="java.util.Hashtable" resultType="shjh.springmvc.domain.User">
+    <cache/>
+	<select id="queryUser" parameterType="java.util.Hashtable" resultType="shjh.springmvc.domain.User" useCache="true">
 		select * from user where user_name = #{userName} and password = #{password}
 	</select>
 	
-	<select id="queryUserById" parameterType="java.util.Hashtable" resultType="shjh.springmvc.domain.User">
-		select * from user where user_id = #{userId}
+	<select id="queryUserById" parameterType="java.lang.Integer" resultType="shjh.springmvc.domain.User">
+		select user_id userId, user_name userName, password, age, create_time createTime, status from user where user_id = #{userId}
 	</select>
 	
-	<select id="queryUserByName" parameterType="java.util.Hashtable" resultType="shjh.springmvc.domain.User">
+	<select id="queryUserByName" parameterType="java.lang.String" resultMap="result_Domain">
 		select * from user where user_name = #{userName}
 	</select>
 	
 	<insert id="saveUser" parameterType="shjh.springmvc.domain.User" flushCache="true">
 		insert into user values(#{userId}, #{userName}, #{password}, #{age}, #{create_date}, #{status})
 	</insert>
+	
+	<!--通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
+	<resultMap type="shjh.springmvc.domain.User" id="result_Domain">
+	    <id property="userId" column="user_id"/>
+	    <result property="userName" column="user_name"/>
+	    <result property="createTime" column="create_time"/>
+	</resultMap>
 </mapper>
