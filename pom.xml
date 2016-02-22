@@ -108,6 +108,11 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>${mybatis.spring}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-ehcache</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 		<!-- mybatis end -->
 		
 		<!-- redis start -->
@@ -133,12 +138,27 @@
 			<artifactId>${connection.pool.artifactId}</artifactId>
 			<version>${connection.pool.version}</version>
 		</dependency>
+		<!-- connection pool -->
+		
 		
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.1.1</version>
 		</dependency>
+		
+		<!-- ehcache -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>2.10.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.6.8</version>
+		</dependency>
+		<!-- ehcache -->
 		
 		<dependency>
 			<groupId>javax.servlet.jsp.jstl</groupId>
