@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import shjh.springmvc.domain.User;
+import shjh.springmvc.framework.core.DataResult;
 import shjh.springmvc.service.LoginService;
 
 @RestController
@@ -37,7 +38,12 @@ public class LoginController {
     	String userName = (String) request.getParameter("userName");
     	String password = (String) request.getParameter("password");
     	HttpSession session = request.getSession();
-    	loginService.logon(userName, password);
+    	DataResult result = loginService.logon(userName, password);
+    	try {
+			result.throwExceptionIfError();
+		} catch (Exception e) {
+			result.setMessage("登录失败");
+		}
     	return "redirect:/student/queryall.do";
     }
     
