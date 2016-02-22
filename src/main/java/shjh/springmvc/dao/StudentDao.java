@@ -2,8 +2,11 @@ package shjh.springmvc.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import shjh.springmvc.domain.Student;
 
+//@Repository
 public interface StudentDao {
 	public Student queryStudentById(int id);
 	

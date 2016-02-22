@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="true">
+    <!--console 控制台调试日志  -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder charset="UTF-8">
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{40} %line %method - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="aroundspring-all" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-all.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-all.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{40} %line %method - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="aroundspring-info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-info.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{40} %line %method - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="aroundspring-warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-warn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-warn.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{40} %line %method - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="aroundspring-error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{40} %line %method - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 所有包的日志 -->
+    <logger name="shjh.springmvc" level="INFO"/>
+    <!--log4jdbc:连SQL带执行时间打印出来 -->
+    <logger name="jdbc.sqltiming" level="INFO"/>
+    <!--log4jdbc:只打印SQL不带执行时间 -->
+    <!--
+    <logger name="jdbc.sqlonly" level="INFO"/>
+     -->
+    <root level="DEBUG">
+        <appender-ref ref="console" />
+        <appender-ref ref="aroundspring-all" />
+        <appender-ref ref="aroundspring-info" />
+        <appender-ref ref="aroundspring-warn" />
+        <appender-ref ref="aroundspring-error" />
+    </root>
+</configuration>
