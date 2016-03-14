@@ -5,7 +5,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 //@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 @ContextConfiguration(value = "classpath:META-INF/spring/applicationContext.xml")
-public class BaseJunitTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class BaseJunitTest /*extends AbstractTransactionalJUnit4SpringContextTests */{
 
     @BeforeClass
     public static void  beforeTest(){

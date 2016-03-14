@@ -8,9 +8,9 @@
     </appender>
 
     <appender name="aroundspring-all" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-all.log</file>
+        <file>C:/lc/tools/apache-tomcat-8.0.22/logs/aroundspring/aroundspring-all.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-all.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <fileNamePattern>C:/lc/tools/apache-tomcat-8.0.22/logs/aroundspring/aroundspring-all.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>
@@ -19,9 +19,9 @@
     </appender>
 
     <appender name="aroundspring-info" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-info.log</file>
+        <file>C:/lc/tools/apache-tomcat-8.0.22/logs/aroundspring/aroundspring-info.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-info.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>C:/lc/tools/apache-tomcat-8.0.22/logs/aroundspring/aroundspring-info.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder charset="UTF-8">
@@ -35,9 +35,9 @@
     </appender>
 
     <appender name="aroundspring-warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-warn.log</file>
+        <file>C:/lc/tools/apache-tomcat-8.0.22/logs/aroundspring/aroundspring-warn.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-warn.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>C:/lc/tools/apache-tomcat-8.0.22/logs/aroundspring/aroundspring-warn.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder charset="UTF-8">
@@ -51,9 +51,9 @@
     </appender>
 
     <appender name="aroundspring-error" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-error.log</file>
+        <file>C:/lc/tools/apache-tomcat-8.0.22/logs/aroundspring/aroundspring-error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>E:/tools/apache-tomcat-7.0.59-windows-x64/logs/aroundspring/aroundspring-error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>C:/lc/tools/apache-tomcat-8.0.22/logs/aroundspring/aroundspring-error.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder charset="UTF-8">

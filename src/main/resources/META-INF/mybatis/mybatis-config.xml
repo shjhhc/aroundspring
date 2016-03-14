@@ -26,7 +26,7 @@
 		</environment>
 	</environments>
 	
-	<mappers>
+	<!-- <mappers>
 	    <mapper resource="META-INF/mybatis/mappers/UserMapper.xml"/>
-	</mappers>
+	</mappers> -->
 </configuration>
