@@ -9,13 +9,13 @@
 
 	<dubbo:application name="shjh" />
 	<!-- 使用dubbo服务提供者协议暴露服务 -->
-	<dubbo:protocol name="rmi" port="20881" threadpool="fixed"
-		threads="5" />
+	<dubbo:protocol name="rmi" port="20881" />
+	<dubbo:protocol name="webservice" port="8080" server="servlet" />
 	<!-- 服务注册地址 -->
 	<dubbo:registry id="shjhRegistry" address="zookeeper://127.0.0.1:2181" />
 
 	<!-- 发布服务 -->
-	<dubbo:service interface="shjh.springmvc.service.UserService" ref="userService" registry="shjhRegistry" />
+	<dubbo:service interface="shjh.springmvc.service.UserService" ref="userService" registry="shjhRegistry" protocol="webservice" />
 	
 	<!-- 启动时消费服务检查配置，check=true时，如果消费的服务不存在，则会启动失败，不需要强制检查，则可配置成false -->
 	<dubbo:consumer check="false" />

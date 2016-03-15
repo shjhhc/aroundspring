@@ -25,6 +25,18 @@
 		<servlet-name>springmvc</servlet-name>
 		<url-pattern>*.json</url-pattern>
 	</servlet-mapping>
+	<!--dubbo 服务根路径-->
+    <servlet>
+        <servlet-name>dubbo</servlet-name>
+        <servlet-class>
+            com.alibaba.dubbo.remoting.http.servlet.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dubbo</servlet-name>
+        <url-pattern>/dubboWebService/*</url-pattern>
+    </servlet-mapping>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>

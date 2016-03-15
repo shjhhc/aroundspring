@@ -7,7 +7,7 @@ import shjh.springmvc.domain.User;
 import shjh.springmvc.mongo.dao.UserRepository;
 import shjh.springmvc.service.UserService;
 
-@Service("UserService")
+@Service("userService")
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
