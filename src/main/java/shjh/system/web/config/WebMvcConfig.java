@@ -34,16 +34,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         return viewResolver;
     }
 
-    @Override
-    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-        configurer.defaultContentType(MediaType.APPLICATION_JSON);
-    }
-
-    @Bean
-    public ViewResolver cnViewResolver() {
-        ContentNegotiatingViewResolver viewResolver = new ContentNegotiatingViewResolver();
-        return viewResolver;
-    }
+//    @Override
+//    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+//        configurer.defaultContentType(MediaType.APPLICATION_JSON);
+//    }
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
