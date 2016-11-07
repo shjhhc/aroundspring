@@ -25,7 +25,7 @@
         <activemq.core.version>5.7.0</activemq.core.version>
         <org.javassist.version>3.20.0-GA</org.javassist.version>
         <fastjson.version>1.2.17</fastjson.version>
-
+		<spring.securityoauth2.version>2.0.11.RELEASE</spring.securityoauth2.version>
         <servlet.version>3.1-b09</servlet.version>
 	</properties>
 
@@ -111,6 +111,11 @@
 			<groupId>${spring.groupId}</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>${spring.securityoauth2.version}</version>
 		</dependency>
 		<!-- spring end -->
         <!-- JSON begin -->

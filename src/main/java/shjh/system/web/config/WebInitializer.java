@@ -1,33 +1,27 @@
 package shjh.system.web.config;
 
-import org.springframework.core.annotation.Order;
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
  * 所有实现了WebApplicationInitializer接口的类都会在容器启动时自动被加载运行，用@Order注解设定加载顺序
  * 这是servlet3.0+后加入的特性，web.xml中可以不需要配置内容，都硬编码到WebApplicationInitializer的实现类中
  * Created by shjh on 2016/10/30.
  */
-@Order
+//@Order
 /*spring DispatcherServlet的配置,其它servlet和监听器等需要额外声明，用@Order注解设定启动顺序*/
-public class WebInitializer implements WebApplicationInitializer {
+public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
-        AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-        rootContext.register(ApplicationConfig.class);
-        servletContext.addListener(new ContextLoaderListener(rootContext));
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class<?>[]{ApplicationConfig.class};
+    }
 
-        AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
-        webContext.register(MVCConfig.class);
-        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(webContext));
-        dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/");
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class<?>[]{WebMvcConfig.class};
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
     }
 }
