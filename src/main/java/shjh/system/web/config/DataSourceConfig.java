@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * Created by shjh on 2016/10/30.
  */
 @Configuration
-@PropertySources(@PropertySource("classpath:config.properties"))
+@PropertySources(@PropertySource("classpath:/properties/config.properties"))
 public class DataSourceConfig {
     @Value("#{jdbc.driverClassName}")
     private String driverClassName;
