@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
@@ -67,5 +68,16 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
+    }
+
+    /**
+     *  公共部分解析器
+     * @return
+     */
+    @Bean(name="multipartResolver")
+    public CommonsMultipartResolver commonsMultipartResolver(){
+        CommonsMultipartResolver common = new CommonsMultipartResolver();
+        common.setMaxUploadSize(10 * 1024 * 1024);//10M
+        return common;
     }
 }

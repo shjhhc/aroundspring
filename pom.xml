@@ -26,6 +26,8 @@
         <org.javassist.version>3.20.0-GA</org.javassist.version>
         <fastjson.version>1.2.17</fastjson.version>
 		<spring.securityoauth2.version>2.0.11.RELEASE</spring.securityoauth2.version>
+		<mybatis.version>3.3.0</mybatis.version>
+		<mybatis.spring>1.2.3</mybatis.spring>
         <servlet.version>3.1-b09</servlet.version>
 	</properties>
 
@@ -118,6 +120,18 @@
 			<version>${spring.securityoauth2.version}</version>
 		</dependency>
 		<!-- spring end -->
+		<!-- mybatis start-->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis.spring}</version>
+		</dependency>
+		<!-- mybatis end-->
         <!-- JSON begin -->
         <dependency>
             <groupId>com.alibaba</groupId>
