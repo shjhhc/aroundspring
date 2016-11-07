@@ -1,18 +1,13 @@
 package shjh.system.web.config;
 
-import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.ArrayList;
@@ -74,10 +69,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
      *  公共部分解析器
      * @return
      */
-    @Bean(name="multipartResolver")
-    public CommonsMultipartResolver commonsMultipartResolver(){
-        CommonsMultipartResolver common = new CommonsMultipartResolver();
-        common.setMaxUploadSize(10 * 1024 * 1024);//10M
-        return common;
-    }
+//    @Bean(name="multipartResolver")
+//    public CommonsMultipartResolver commonsMultipartResolver(){
+//        CommonsMultipartResolver common = new CommonsMultipartResolver();
+//        common.setMaxUploadSize(10 * 1024 * 1024);//10M
+//        return common;
+//    }
 }
