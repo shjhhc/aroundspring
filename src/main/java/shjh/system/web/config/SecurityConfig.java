@@ -12,25 +12,25 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import shjh.system.web.security.service.AccountUserDetailsService;
 
 /**
  * Created by m on 2016/11/7.
  */
-//@Configuration
-//@EnableWebMvcSecurity
+@Configuration
+@EnableWebMvcSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    @Qualifier("accountUserDetailsService")
-    private UserDetailsService userDetailsService;
+    private AccountUserDetailsService accountUserDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(accountUserDetailsService);
     }
 
     @Override
     protected UserDetailsService userDetailsService() {
-        return userDetailsService;
+        return accountUserDetailsService;
     }
 
     @Override
@@ -41,23 +41,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-        //½«login.jsp¶¨ÎªµÇÂ½Ò³Ãæ£¬Ö»´¦Àí/loginÕâ¸öÇëÇó
+        //ï¿½ï¿½login.jspï¿½ï¿½Îªï¿½ï¿½Â½Ò³ï¿½æ£¬Ö»ï¿½ï¿½ï¿½ï¿½/loginï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         .formLogin().loginPage("/login.jsp")
                 .and()
                 .formLogin().loginProcessingUrl("/login")
                 .and()
                 .formLogin().defaultSuccessUrl("/home")
                 .and()
-                        //Èç¹ûµÇÂ½³É¹¦¾ÍÌø×ªµ½/homeÕâ¸öµØÖ·£¬Èç¹ûÊ§°Ü¾ÍÌø×ªµ½/?error=1
+                        //ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½/homeï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü¾ï¿½ï¿½ï¿½×ªï¿½ï¿½/?error=1
                 .formLogin().failureUrl("/?error=1")
                 .and()
-//        ÕâÀïÅäÖÃµÄÊÇµÇ³öµÄÇëÇó
+//        ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ÇµÇ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         .logout().logoutUrl("/logout")
-//        µÇÂ½³É¹¦ºóÌø×ªµÄµØÖ·£¬ÒÔ¼°É¾³ýµÄcookieÃû³Æ
+//        ï¿½ï¿½Â½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½Ô¼ï¿½É¾ï¿½ï¿½ï¿½ï¿½cookieï¿½ï¿½ï¿½ï¿½
                 .and().logout().logoutSuccessUrl("/")
                 .and().logout().deleteCookies("JSESSIONID")
                 .and()
-//        ÅäÖÃ¼Ç×¡ÎÒµÄ¹ýÆÚÊ±¼ä
+//        ï¿½ï¿½ï¿½Ã¼ï¿½×¡ï¿½ÒµÄ¹ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
         .rememberMe().tokenValiditySeconds(1209600)
                 .and();
     }

@@ -1,7 +1,7 @@
 package shjh.module.account.service.impl;
 
 import org.springframework.stereotype.Service;
-import shjh.module.account.bean.Stu;
+import shjh.module.account.bean.domain.Stu;
 import shjh.module.account.service.StuService;
 
 /**

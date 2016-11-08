@@ -1,4 +1,4 @@
-package shjh.module.account.bean;
+package shjh.module.account.bean.domain;
 
 import java.util.Date;
 

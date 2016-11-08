@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-import shjh.module.account.bean.User;
+import shjh.module.account.bean.domain.User;
 
 /**
  * Created by m on 2016/11/7.

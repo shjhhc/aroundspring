@@ -1,4 +1,4 @@
-package shjh.module.account.bean;
+package shjh.module.account.bean.domain;
 
 /**
  * Created by m on 2016/10/31.
