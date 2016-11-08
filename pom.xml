@@ -54,8 +54,6 @@
             <scope>provided</scope>
         </dependency>
 
-
-
         <!-- tomcat jstl -->
         <dependency>
             <groupId>javax.servlet</groupId>
