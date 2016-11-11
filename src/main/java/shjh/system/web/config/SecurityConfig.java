@@ -16,8 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 /**
  * Created by m on 2016/11/7.
  */
-//@Configuration
-//@EnableWebMvcSecurity
+@Configuration
+@EnableWebMvcSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     @Qualifier("accountUserDetailsService")

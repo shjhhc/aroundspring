@@ -29,6 +29,8 @@
 		<mybatis.version>3.3.0</mybatis.version>
 		<mybatis.spring>1.2.3</mybatis.spring>
         <servlet.version>3.1-b09</servlet.version>
+		<!--http 操作-->
+		<httpclient.version>4.5</httpclient.version>
 	</properties>
 
 	<dependencies>
@@ -139,6 +141,18 @@
             <version>${fastjson.version}</version>
         </dependency>
         <!-- JSON end -->
+		<!--http start-->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+		<!--http end-->
 		<!--dubbo start-->
        <dependency>
             <groupId>com.alibaba</groupId>
@@ -175,7 +189,7 @@
             <artifactId>javassist</artifactId>
             <version>${org.javassist.version}</version>
         </dependency>
-        
+
         <!--dubbo end-->
 		
 		<!--jms start -->

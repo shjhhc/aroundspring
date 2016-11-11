@@ -17,4 +17,8 @@ public class StuServiceImpl implements StuService {
         stu.setOccupation("sjsjsi");
         return stu;
     }
+
+    public static void main(String[] args) {
+
+    }
 }
