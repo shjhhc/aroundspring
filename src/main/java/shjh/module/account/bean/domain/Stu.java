@@ -1,21 +1,14 @@
-package shjh.module.account.bean;
+package shjh.module.account.bean.domain;
+
+import shjh.module.account.bean.req.BaseReq;
 
 /**
  * Created by m on 2016/10/31.
  */
-public class Stu {
-    private Integer id;
+public class Stu extends BaseReq {
     private String name;
     private Integer age;
     private String occupation;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

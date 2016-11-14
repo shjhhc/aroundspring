@@ -1,6 +1,6 @@
 package shjh.module.account.service;
 
-import shjh.module.account.bean.Stu;
+import shjh.module.account.bean.domain.Stu;
 
 /**
  * Created by m on 2016/11/1.

@@ -3,7 +3,7 @@ package shjh.module.account.rest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import shjh.module.account.bean.Stu;
+import shjh.module.account.bean.domain.Stu;
 import shjh.module.account.dao.StuDao;
 
 /**
