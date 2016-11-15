@@ -21,13 +21,13 @@ public class AccountController {
 //        return stuDao.queryByName(name);
     }
 
-    @RequestMapping("/stu")
+    @RequestMapping(value = "/stu", name = "AccountController.queryStu")
     public Stu queryStu(String name){
         System.out.println("succeed");
         Stu stu = new Stu();
         stu.setAge(23);
         stu.setId(11);
-        stu.setName("stu");
+        stu.setName(name);
         stu.setOccupation("sjsjsi");
 //        return stuDao.queryByName(name);
         return stu;
@@ -39,7 +39,7 @@ public class AccountController {
         Stu stu = new Stu();
         stu.setAge(23);
         stu.setId(11);
-        stu.setName("stu");
+        stu.setName(name);
         stu.setOccupation("sjsjsi");
 //        return stuDao.queryByName(name);
         return stu;

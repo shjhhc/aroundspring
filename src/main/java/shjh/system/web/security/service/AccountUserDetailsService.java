@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import shjh.module.account.bean.Stu;
+import shjh.module.account.bean.domain.Stu;
 import shjh.module.account.service.StuService;
 
 import java.util.ArrayList;
