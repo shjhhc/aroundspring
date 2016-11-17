@@ -13,15 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 @Configuration
 @ComponentScan(basePackages = {"shjh.module", "shjh.system"},
         excludeFilters = {@ComponentScan.Filter(value = RestController.class)})
-@Import({DataSourceConfig.class})
+@Import({
+        DataSourceConfig.class,
+        SpringCacheConfig.class
+})
 public class ApplicationConfig {
 
     /**
-     * ±ØÐë¼ÓÉÏstatic
-     * »òÕß@PropertySource
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½static
+     * ï¿½ï¿½ï¿½ï¿½@PropertySource
      */
     @Bean
     public PropertySourcesPlaceholderConfigurer loadProperties() {
-        return new PropertySourcesPlaceholderConfigurer ();
+        return new PropertySourcesPlaceholderConfigurer();
     }
 }

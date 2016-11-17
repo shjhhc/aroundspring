@@ -21,30 +21,27 @@ import javax.sql.DataSource;
  * Created by shjh on 2016/10/30.
  */
 @Configuration
-@PropertySources(@PropertySource("classpath:/properties/config.properties"))
+@PropertySources({
+        @PropertySource("classpath:/properties/config.properties"),
+        @PropertySource("classpath:/properties/redis.properties")
+        })
 public class DataSourceConfig {
     @Autowired
     private Environment environment;
 
-    @Value("${driverClassName}")
+    @Value("${jdbc.driverClassName}")
     private String driverClassName;
-
-    @Value("${url}")
+    @Value("${jdbc.url}")
     private String url;
-
-    @Value("${username}")
+    @Value("${jdbc.username}")
     private String username;
-
-    @Value("${password}")
+    @Value("${jdbc.password}")
     private String password;
-
-    @Value("${maxTotal}")
+    @Value("${jdbc.maxTotal}")
     private Integer maxTotal;
-
-    @Value("${minIdle}")
+    @Value("${jdbc.minIdle}")
     private Integer minIdle;
-
-    @Value("${maxIdle}")
+    @Value("${jdbc.maxIdle}")
     private Integer maxIdle;
 
     @Bean(destroyMethod = "close")

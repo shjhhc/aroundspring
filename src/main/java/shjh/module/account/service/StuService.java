@@ -7,4 +7,6 @@ import shjh.module.account.bean.domain.Stu;
  */
 public interface StuService {
     Stu queryStuByName(String name);
+
+    public Stu queryByName(String name);
 }
