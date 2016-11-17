@@ -11,7 +11,7 @@
 	<properties>
 		<spring.groupId>org.springframework</spring.groupId>
 		<spring.version>4.1.6.RELEASE</spring.version>
-		<spring.data.version>1.6.0.RELEASE</spring.data.version>
+		<spring.data.version>1.7.4.RELEASE</spring.data.version>
 		<!-- mysql 驱动 -->
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
