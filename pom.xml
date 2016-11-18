@@ -10,7 +10,7 @@
 
 	<properties>
 		<spring.groupId>org.springframework</spring.groupId>
-		<spring.version>4.1.6.RELEASE</spring.version>
+		<spring.version>4.2.8.RELEASE</spring.version>
 		<spring.data.version>1.7.4.RELEASE</spring.data.version>
 		<!-- mysql 驱动 -->
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>

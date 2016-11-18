@@ -30,9 +30,9 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/stu", name = "AccountController.queryStu")
-    public Stu queryStu(@RequestBody String name) {
-        Stu stu = stuService.queryByName(name);
-//        stu = stuService.queryStuByName(name);
+    public Stu queryStu(@RequestBody Stu req) {
+        Stu stu = stuService.queryByName(req.getName());
+        stu = stuService.queryStuByName(stu.getName());
         return stu;
     }
 

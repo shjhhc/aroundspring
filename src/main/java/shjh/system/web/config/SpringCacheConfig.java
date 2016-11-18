@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
  * Created by shjh on 2016/11/17.
  */
 @Configuration
-@EnableCaching
+@EnableCaching(proxyTargetClass = true)
 public class SpringCacheConfig extends CachingConfigurerSupport {
     @Value("${poolConfig.maxIdle}")
     private Integer maxIdle;
@@ -70,17 +70,22 @@ public class SpringCacheConfig extends CachingConfigurerSupport {
      * 若想使用这个key</br>
      * 只需要讲注解上keyGenerator的值设置为customKeyGenerator即可</br>
      */
-    @Bean
+    @Bean(name = "myKeyGenerator")
     public KeyGenerator customKeyGenerator() {
         return new KeyGenerator() {
             @Override
             public Object generate(Object o, Method method, Object... objects) {
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 sb.append(o.getClass().getName());
+                sb.append(".");
                 sb.append(method.getName());
+                sb.append("(");
                 for (Object obj : objects) {
                     sb.append(obj.toString());
+                    sb.append(",");
                 }
+                sb.append(")");
+                System.out.println("keyGenerator=" + sb.toString());
                 return sb.toString();
             }
         };
