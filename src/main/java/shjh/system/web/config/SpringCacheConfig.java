@@ -8,7 +8,9 @@ import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.RedisNode;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import redis.clients.jedis.JedisPoolConfig;
@@ -29,6 +31,10 @@ public class SpringCacheConfig extends CachingConfigurerSupport {
     private String hostName;
     @Value("${factory.port}")
     private Integer port;
+    @Value("${cluster.Node0.hostName}")
+    private String clusterHostName;
+    @Value("${cluster.Node0.port}")
+    private Integer clusterPort;
     @Value("${expireTime}")
     private Integer expireTime;
 
@@ -46,14 +52,40 @@ public class SpringCacheConfig extends CachingConfigurerSupport {
         return redisTemplate;
     }
 
-    @Bean
-    public JedisConnectionFactory redisConnectionFactory() {
-        JedisConnectionFactory factory = new JedisConnectionFactory();
-        factory.setHostName(hostName);
-        factory.setPort(port);
-        factory.setPoolConfig(jedisPoolConfig());
-        return factory;
+    /**
+     * 集群配置
+     * @return
+     */
+    @Bean(name = "redisClusterConfiguration")
+    public RedisClusterConfiguration redisClusterConfiguration(){
+        RedisClusterConfiguration clusterConfiguration = new RedisClusterConfiguration();
+//        clusterConfiguration.addClusterNode(new RedisNode("172.16.2.177", 6379));
+        clusterConfiguration.addClusterNode(new RedisNode(clusterHostName, clusterPort));
+        return clusterConfiguration;
     }
+
+    /**
+     * 集群
+     * @param redisClusterConfiguration
+     * @return
+     */
+    @Bean
+    public JedisConnectionFactory redisConnectionFactory(RedisClusterConfiguration redisClusterConfiguration) {
+        return new JedisConnectionFactory(redisClusterConfiguration, jedisPoolConfig());
+    }
+
+    /**
+     * 单机
+     * @return
+     */
+//    @Bean
+//    public JedisConnectionFactory redisConnectionFactory() {
+//        JedisConnectionFactory factory = new JedisConnectionFactory();
+//        factory.setHostName(hostName);
+//        factory.setPort(port);
+//        factory.setPoolConfig(jedisPoolConfig());
+//        return factory;
+//    }
 
     @Bean
     public JedisPoolConfig jedisPoolConfig() {
