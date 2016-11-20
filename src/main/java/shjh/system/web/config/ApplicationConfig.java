@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Configuration
 @ComponentScan(basePackages = {"shjh.module", "shjh.system"},
         excludeFilters = {@ComponentScan.Filter(value = RestController.class)})
-@Import({
-        DataSourceConfig.class,
-        SpringCacheConfig.class
-})
+//@Import({
+//        DataSourceConfig.class,
+//        SpringCacheConfig.class
+//})
 public class ApplicationConfig {
 
     /**

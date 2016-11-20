@@ -13,7 +13,6 @@ public class MvcRestfulConfig extends WebMvcConfigurationSupport {
 
     @Override
     protected RequestMappingHandlerMapping createRequestMappingHandlerMapping() {
-        RestfulRequestMappingHandlerMapping restfulRequestMappingHandlerMapping = new RestfulRequestMappingHandlerMapping();
-        return restfulRequestMappingHandlerMapping;
+        return new RestfulRequestMappingHandlerMapping();
     }
 }

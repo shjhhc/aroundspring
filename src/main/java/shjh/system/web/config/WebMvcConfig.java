@@ -18,10 +18,10 @@ import java.util.List;
  * Created by shjh on 2016/10/30.
  */
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 @ComponentScan(basePackages = "shjh.module", useDefaultFilters = false,
         includeFilters = @ComponentScan.Filter(value = RestController.class))
-@Import(MvcRestfulConfig.class)
+//@Import(MvcRestfulConfig.class)
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
