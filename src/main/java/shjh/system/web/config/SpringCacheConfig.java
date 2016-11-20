@@ -56,36 +56,36 @@ public class SpringCacheConfig extends CachingConfigurerSupport {
      * 集群配置
      * @return
      */
-    @Bean(name = "redisClusterConfiguration")
-    public RedisClusterConfiguration redisClusterConfiguration(){
-        RedisClusterConfiguration clusterConfiguration = new RedisClusterConfiguration();
-//        clusterConfiguration.addClusterNode(new RedisNode("172.16.2.177", 6379));
-        clusterConfiguration.addClusterNode(new RedisNode(clusterHostName, clusterPort));
-        return clusterConfiguration;
-    }
+//    @Bean(name = "redisClusterConfiguration")
+//    public RedisClusterConfiguration redisClusterConfiguration(){
+//        RedisClusterConfiguration clusterConfiguration = new RedisClusterConfiguration();
+////        clusterConfiguration.addClusterNode(new RedisNode("172.16.2.177", 6379));
+//        clusterConfiguration.addClusterNode(new RedisNode(clusterHostName, clusterPort));
+//        return clusterConfiguration;
+//    }
 
     /**
      * 集群
      * @param redisClusterConfiguration
      * @return
      */
-    @Bean
-    public JedisConnectionFactory redisConnectionFactory(RedisClusterConfiguration redisClusterConfiguration) {
-        return new JedisConnectionFactory(redisClusterConfiguration, jedisPoolConfig());
-    }
+//    @Bean
+//    public JedisConnectionFactory redisConnectionFactory(RedisClusterConfiguration redisClusterConfiguration) {
+//        return new JedisConnectionFactory(redisClusterConfiguration, jedisPoolConfig());
+//    }
 
     /**
      * 单机
      * @return
      */
-//    @Bean
-//    public JedisConnectionFactory redisConnectionFactory() {
-//        JedisConnectionFactory factory = new JedisConnectionFactory();
-//        factory.setHostName(hostName);
-//        factory.setPort(port);
-//        factory.setPoolConfig(jedisPoolConfig());
-//        return factory;
-//    }
+    @Bean
+    public JedisConnectionFactory redisConnectionFactory() {
+        JedisConnectionFactory factory = new JedisConnectionFactory();
+        factory.setHostName(hostName);
+        factory.setPort(port);
+        factory.setPoolConfig(jedisPoolConfig());
+        return factory;
+    }
 
     @Bean
     public JedisPoolConfig jedisPoolConfig() {

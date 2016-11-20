@@ -22,7 +22,7 @@ public class AccountController {
     @Autowired
     private StuService stuService;
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/", name = "AccountController")
     public void queryStuByName(HttpServletResponse response) throws IOException {
         System.out.println("succeed");
         response.getWriter().write("hello shjh");
@@ -36,7 +36,7 @@ public class AccountController {
         return stu;
     }
 
-    @RequestMapping("/stu/{name}")
+    @RequestMapping(value = "/stu/{name}", name = "AccountController.queryByName")
     public Stu queryByName(@PathVariable("name") String name){
         System.out.println("succeed");
         Stu stu = new Stu();
