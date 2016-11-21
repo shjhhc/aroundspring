@@ -1,14 +1,12 @@
 package shjh.module.account.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import shjh.module.account.bean.domain.Stu;
 import shjh.module.account.dao.StuDao;
 import shjh.module.account.service.StuService;
 
+import javax.lang.model.element.Name;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -46,5 +44,15 @@ public class AccountController {
         stu.setOccupation("sjsjsi");
 //        return stuDao.queryByName(name);
         return stu;
+    }
+
+    @RequestMapping(value = "restful/{name}", method = RequestMethod.GET)
+    public String restful(@PathVariable String name){
+        return name;
+    }
+
+    @RequestMapping(value = "norestful", method = RequestMethod.GET)
+    public String norestful(@RequestParam String name){
+        return name;
     }
 }
