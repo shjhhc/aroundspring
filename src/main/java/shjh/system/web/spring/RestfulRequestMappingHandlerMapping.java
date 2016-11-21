@@ -18,13 +18,6 @@ public class RestfulRequestMappingHandlerMapping extends RequestMappingHandlerMa
     private final Map<HandlerMethod, RequestMappingInfo> mappingLookup = new LinkedHashMap<HandlerMethod, RequestMappingInfo>();
 
     @Override
-    public void registerMapping(RequestMappingInfo mapping, Object handler, Method method) {
-        HandlerMethod handlerMethod = createHandlerMethod(handler, method);
-        mappingLookup.put(handlerMethod, mapping);
-        super.registerMapping(mapping, handler, method);
-    }
-
-    @Override
     protected void registerHandlerMethod(Object handler, Method method, RequestMappingInfo mapping) {
         HandlerMethod handlerMethod = createHandlerMethod(handler, method);
         mappingLookup.put(handlerMethod, mapping);

@@ -46,7 +46,7 @@ public class AccountController {
         return stu;
     }
 
-    @RequestMapping(value = "restful/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "restful/{name}", name = "restful", method = RequestMethod.GET)
     public String restful(@PathVariable String name){
         return name;
     }
