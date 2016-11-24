@@ -1,4 +1,4 @@
-package shjh.module.account.bean.req;
+package shjh.system.web.common.bean;
 
 import java.io.Serializable;
 

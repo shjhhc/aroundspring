@@ -1,6 +1,6 @@
 package shjh.module.account.bean.domain;
 
-import shjh.module.account.bean.req.BaseReq;
+import shjh.system.web.common.bean.BaseReq;
 
 /**
  * Created by m on 2016/10/31.
@@ -14,23 +14,26 @@ public class Stu extends BaseReq {
         return name;
     }
 
-    public void setName(String name) {
+    public Stu setName(String name) {
         this.name = name;
+        return this;
     }
 
     public Integer getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public Stu setAge(Integer age) {
         this.age = age;
+        return this;
     }
 
     public String getOccupation() {
         return occupation;
     }
 
-    public void setOccupation(String occupation) {
+    public Stu setOccupation(String occupation) {
         this.occupation = occupation;
+        return this;
     }
 }

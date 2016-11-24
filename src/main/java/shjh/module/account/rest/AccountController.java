@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import shjh.module.account.bean.domain.Stu;
 import shjh.module.account.dao.StuDao;
 import shjh.module.account.service.StuService;
+import shjh.system.web.common.exception.ShjhException;
 
-import javax.lang.model.element.Name;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -35,14 +35,12 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/stu/{name}", name = "AccountController.queryByName")
-    public Stu queryByName(@PathVariable("name") String name){
+    public Stu queryByName(@PathVariable("name") String name, @RequestBody Stu stu) throws ShjhException {
         System.out.println("succeed");
-        Stu stu = new Stu();
         stu.setAge(23);
         stu.setId(11);
         stu.setName(name);
         stu.setOccupation("sjsjsi");
-//        return stuDao.queryByName(name);
         return stu;
     }
 
@@ -52,7 +50,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "norestful", method = RequestMethod.GET)
-    public String norestful(@RequestParam String name){
+     public String norestful(@RequestParam String name){
         return name;
     }
 }

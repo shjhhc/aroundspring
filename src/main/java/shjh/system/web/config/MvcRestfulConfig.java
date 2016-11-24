@@ -12,7 +12,7 @@ import shjh.system.web.spring.RestfulRequestMappingHandlerMapping;
 public class MvcRestfulConfig extends WebMvcConfigurationSupport {
 
     @Override
-      protected RequestMappingHandlerMapping createRequestMappingHandlerMapping() {
+    protected RequestMappingHandlerMapping createRequestMappingHandlerMapping() {
         return new RestfulRequestMappingHandlerMapping();
     }
 }

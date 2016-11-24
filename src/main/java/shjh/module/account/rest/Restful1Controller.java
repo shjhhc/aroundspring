@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by m on 2016/11/23.
  */
 @RestController
-@RequestMapping("/rest")
+@RequestMapping("/rest1")
 public class Restful1Controller {
     @RequestMapping(value = "restful/{name}", name = "restful", method = RequestMethod.GET)
     public String restful(@PathVariable String name){

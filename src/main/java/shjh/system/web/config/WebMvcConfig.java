@@ -10,6 +10,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import shjh.system.web.spring.ShjhHttpMessageConverter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
  * Created by shjh on 2016/10/30.
  */
 @Configuration
-//@EnableWebMvc
+@EnableWebMvc
 @ComponentScan(basePackages = "shjh.module", useDefaultFilters = false,
         includeFilters = @ComponentScan.Filter(value = RestController.class))
 //@Import(MvcRestfulConfig.class)
@@ -39,7 +40,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        FastJsonHttpMessageConverter messageConverter = new FastJsonHttpMessageConverter();
+        ShjhHttpMessageConverter messageConverter = new ShjhHttpMessageConverter();
         List<MediaType> mediaTypes = new ArrayList<>();
         mediaTypes.add(MediaType.APPLICATION_JSON);
         mediaTypes.add(MediaType.TEXT_HTML);

@@ -6,7 +6,7 @@ import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import shjh.module.account.bean.domain.Stu;
-import shjh.module.account.bean.req.BaseReq;
+import shjh.system.web.common.bean.BaseReq;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
